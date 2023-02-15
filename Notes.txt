@@ -1,0 +1,8 @@
+Suppose you are building a website for a company that sells various products. The website will have a shopping cart feature that allows users to add products to their cart, remove products from their cart, and view the total price of the items in their cart.
+
+To implement this feature, we can use several design patterns, such as the Observer pattern to update the cart contents when items are added or removed, and the Strategy pattern to allow for different types of pricing strategies.
+
+Observer Pattern:
+
+In the Observer pattern, there are two main components: the observer and the observable. 
+In this case, the shopping cart is the observable, and any changes to its contents (i.e., adding or removing items) will notify the observers (i.e., the view layer of the website) so that they can update the display of the cart contents.
