@@ -1,63 +1,85 @@
-
-
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 interface Observer {
-    void update(int value);
+    void update(Observable observable);
 }
 
 interface Observable {
     void addObserver(Observer observer);
     void removeObserver(Observer observer);
     void notifyObservers();
+    void printItems();
+}
+class Item{
+    int id;
+    Item(){Random rand = new Random();this.id = rand.nextInt((int)1e5);}
+    int getPrice(){return 0;}
+    @Override
+    public String toString(){
+        return ""+this.id;
+    }
 }
 
-class Data implements Observable {
-    private int value;
-    private List<Observer> observers = new ArrayList<Observer>();
+class ShoppingCart implements Observable {
     
-    public int getValue() {
-        return value;
+    private List<Item> items;
+    private List<Observer> observers;
+
+    public ShoppingCart() {
+        this.items = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
-    
-    public void setValue(int value) {
-        this.value = value;
+
+    public void addItem(Item item) {
+        items.add(item);
         notifyObservers();
     }
-    
+
+    public void removeItem(Item item) {
+        items.remove(item);
+        notifyObservers();
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0.0;
+        for (Item item : items) {
+            totalPrice += item.getPrice();
+        }
+        return totalPrice;
+    }
+
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
-    
+
     @Override
     public void removeObserver(Observer observer) {
         observers.remove(observer);
     }
-    s
+
     @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
-            observer.update(value);
+            observer.update(this);
+        }
+        printItems();
+        System.out.println("--------------");
+    }
+    @Override
+    public void printItems(){
+        for(Item it:items){
+            System.out.println(it);
         }
     }
+    
 }
-
-class DataObserver implements Observer {
-    @Override
-    public void update(int value) {
-        System.out.println("Value updated: " + value);
-    }
-}
-
-public class ObserverPattern {
+public class ObserverPattern{
     public static void main(String[] args) {
-        Data data = new Data();
-        
-        DataObserver observer = new DataObserver();
-        data.addObserver(observer);
-        data.setValue(10);
-        data.setValue(20);
+        ShoppingCart sCart = new ShoppingCart();
+        for(int i = 0;i<5;i++) sCart.addItem(new Item());
     }
 }
