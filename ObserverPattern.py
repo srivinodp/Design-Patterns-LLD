@@ -39,3 +39,7 @@ observer = DataObserver()
 data.add_observer(observer)
 data.value = 10
 data.value = 20
+#------Output
+#Value updated: 10
+#Value updated: 20
+
