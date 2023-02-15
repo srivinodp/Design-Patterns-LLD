@@ -6,3 +6,9 @@ Observer Pattern:
 
 In the Observer pattern, there are two main components: the observer and the observable. 
 In this case, the shopping cart is the observable, and any changes to its contents (i.e., adding or removing items) will notify the observers (i.e., the view layer of the website) so that they can update the display of the cart contents.
+
+Singleton Pattern:
+
+In the Singleton pattern, the class has a private constructor to prevent other objects from creating new instances of the class. 
+Instead, the class provides a static method to access the single instance of the class. 
+The first time the static method is called, the class creates a new instance of itself and stores it in a private static field. Subsequent calls to the static method return the existing instance.
