@@ -12,3 +12,8 @@ Singleton Pattern:
 In the Singleton pattern, the class has a private constructor to prevent other objects from creating new instances of the class. 
 Instead, the class provides a static method to access the single instance of the class. 
 The first time the static method is called, the class creates a new instance of itself and stores it in a private static field. Subsequent calls to the static method return the existing instance.
+
+Factory pattern:
+
+The Factory Pattern is a creational pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. 
+This pattern is often used when we have multiple classes that implement a common interface or superclass, and we want to create objects of those classes without exposing the creation logic to the client.
