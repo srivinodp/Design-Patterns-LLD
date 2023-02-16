@@ -17,3 +17,16 @@ Factory pattern:
 
 The Factory Pattern is a creational pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. 
 This pattern is often used when we have multiple classes that implement a common interface or superclass, and we want to create objects of those classes without exposing the creation logic to the client.
+
+Decorator Pattern:
+
+Suppose you have a simple coffee shop application that offers different types of coffee. 
+The basic implementation might have a Coffee interface with just one method: getCost(), which returns the cost of the coffee. 
+You might have different coffee classes like HouseBlend, Espresso, and DarkRoast, which implement this interface and return the cost of the respective coffee type.
+
+Now suppose you want to add the ability to add condiments to your coffee, like milk, sugar, and caramel. 
+You could create separate classes for each combination of coffee and condiment, but that would lead to a huge number of classes and make the code difficult to maintain.
+
+Instead, you can use the Decorator pattern to dynamically add the new behavior to your existing coffee objects. 
+You would create a CondimentDecorator class that also implements the Coffee interface and contains a reference to another Coffee object. 
+Each subclass of CondimentDecorator would add a new behavior to the existing coffee object. For example, the Milk class might add the cost of milk to the existing coffee cost, while the Caramel class might add the cost of caramel
